@@ -5,13 +5,16 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.Id;
 import jakarta.persistence.Table;
+import lombok.Builder;
 
 @Entity
 @Table
+@Builder
 public class Address {
     @Id
     @GeneratedValue
     private Integer id;
+
     private String city;
     private Integer postalCode;
     private String country;

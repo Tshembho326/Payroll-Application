@@ -1,14 +1,17 @@
 package com.payroll.startup.Models;
 
 import jakarta.persistence.*;
+import lombok.Builder;
 import lombok.Data;
 
 @Entity
 @Table
+@Builder
 public class Employee {
     @Id
     @GeneratedValue
     private Integer id;
+
     private String firstName;
     private String lastName;
 
