@@ -4,6 +4,8 @@ import jakarta.persistence.*;
 import lombok.Builder;
 import lombok.Data;
 
+import java.util.List;
+
 @Entity
 @Table
 @Builder
@@ -20,16 +22,35 @@ public class Employee {
     private String gender;
     private String race;
 
+    @OneToOne
+    @JoinColumn(name="address_id")
+    private Address address;
+
+    @OneToOne
+    @JoinColumn(name = "position_id")
+    private Position position;
+
+    @OneToMany(mappedBy = "employee")
+    private List<Identity> identities;
+
+    @OneToOne
+    @JoinColumn(name = "contact_id")
+    private Contact contact;
+
     public Employee() {
     }
 
-    public Employee(Integer id, String firstName, String lastName, String email, String gender, String race) {
+    public Employee(Integer id, String firstName, String lastName, String email, String gender, String race, Address address, Position position, List<Identity> identities, Contact contact) {
         this.id = id;
         this.firstName = firstName;
         this.lastName = lastName;
         this.email = email;
         this.gender = gender;
         this.race = race;
+        this.address = address;
+        this.position = position;
+        this.identities = identities;
+        this.contact = contact;
     }
 
     public Integer getId() {
@@ -78,5 +99,37 @@ public class Employee {
 
     public void setRace(String race) {
         this.race = race;
+    }
+
+    public Address getAddress() {
+        return address;
+    }
+
+    public void setAddress(Address address) {
+        this.address = address;
+    }
+
+    public Position getPosition() {
+        return position;
+    }
+
+    public void setPosition(Position position) {
+        this.position = position;
+    }
+
+    public List<Identity> getIdentities() {
+        return identities;
+    }
+
+    public void setIdentities(List<Identity> identities) {
+        this.identities = identities;
+    }
+
+    public Contact getContact() {
+        return contact;
+    }
+
+    public void setContact(Contact contact) {
+        this.contact = contact;
     }
 }

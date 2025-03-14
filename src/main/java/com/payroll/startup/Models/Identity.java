@@ -16,6 +16,10 @@ public class Identity {
     @Column(unique = true)
     private String idValue;
 
+    @ManyToOne
+    @JoinColumn(name = "employee_id")
+    private Employee employee;
+
     public Identity() {
     }
 

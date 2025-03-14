@@ -1,11 +1,7 @@
 package com.payroll.startup.Models;
 
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.Id;
-import jakarta.persistence.Table;
-import jakarta.persistence.criteria.CriteriaBuilder;
+import jakarta.persistence.*;
 import lombok.Builder;
 
 import java.util.List;
@@ -19,6 +15,7 @@ public class Job {
     @GeneratedValue
     private Integer id;
 
+    @OneToMany(mappedBy = "job")
     private List<Position> positions;
 
     public Job() {

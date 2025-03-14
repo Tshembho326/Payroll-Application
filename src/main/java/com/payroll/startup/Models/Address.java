@@ -1,10 +1,7 @@
 package com.payroll.startup.Models;
 
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.Id;
-import jakarta.persistence.Table;
+import jakarta.persistence.*;
 import lombok.Builder;
 
 @Entity
@@ -20,15 +17,20 @@ public class Address {
     private String country;
     private String street;
 
+    @OneToOne
+    @JoinColumn(name = "employee_id")
+    private Employee employee;
+
     public Address() {
     }
 
-    public Address(Integer id, String city, Integer postalCode, String country, String street) {
+    public Address(Integer id, String city, Integer postalCode, String country, String street, Employee employee) {
         this.id = id;
         this.city = city;
         this.postalCode = postalCode;
         this.country = country;
         this.street = street;
+        this.employee = employee;
     }
 
     public Integer getId() {
@@ -69,5 +71,13 @@ public class Address {
 
     public void setStreet(String street) {
         this.street = street;
+    }
+
+    public Employee getEmployee() {
+        return employee;
+    }
+
+    public void setEmployee(Employee employee) {
+        this.employee = employee;
     }
 }

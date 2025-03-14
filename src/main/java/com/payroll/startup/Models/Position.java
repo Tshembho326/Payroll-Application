@@ -1,9 +1,6 @@
 package com.payroll.startup.Models;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.Id;
-import jakarta.persistence.Table;
+import jakarta.persistence.*;
 import lombok.Builder;
 
 @Builder
@@ -15,16 +12,25 @@ public class Position {
     private Integer id;
     private String positionCode;
     private String status;
-    private String employee;
+
+    @OneToOne
+    @JoinColumn(name="employee_id")
+    private Employee employee;
+
+    @ManyToOne
+    @JoinColumn(name = "job_id")
+    private Job job;
+
 
     public Position() {
     }
 
-    public Position(Integer id, String positionCode, String status, String employee) {
+    public Position(Integer id, String positionCode, String status, Employee employee, Job job) {
         this.id = id;
         this.positionCode = positionCode;
         this.status = status;
         this.employee = employee;
+        this.job = job;
     }
 
     public Integer getId() {
@@ -43,11 +49,11 @@ public class Position {
         this.positionCode = positionCode;
     }
 
-    public String getEmployee() {
+    public Employee getEmployee() {
         return employee;
     }
 
-    public void setEmployee(String employee) {
+    public void setEmployee(Employee employee) {
         this.employee = employee;
     }
 
@@ -57,5 +63,13 @@ public class Position {
 
     public void setStatus(String status) {
         this.status = status;
+    }
+
+    public Job getJob() {
+        return job;
+    }
+
+    public void setJob(Job job) {
+        this.job = job;
     }
 }
