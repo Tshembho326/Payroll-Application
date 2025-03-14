@@ -1,4 +1,7 @@
 package com.payroll.startup.Repository;
 
-public interface AddressRepository {
+import com.payroll.startup.Models.Address;
+import org.springframework.data.jpa.repository.JpaRepository;
+
+public interface AddressRepository extends JpaRepository<Address, Integer> {
 }

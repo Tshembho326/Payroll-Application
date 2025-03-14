@@ -1,4 +1,7 @@
 package com.payroll.startup.Repository;
 
-public interface JobRepository {
+import com.payroll.startup.Models.Job;
+import org.springframework.data.jpa.repository.JpaRepository;
+
+public interface JobRepository extends JpaRepository<Job, Integer> {
 }
