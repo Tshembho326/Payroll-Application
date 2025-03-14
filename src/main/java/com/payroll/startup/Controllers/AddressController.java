@@ -23,9 +23,9 @@ public class AddressController {
         return addressService.getAllAddresses();
     }
 
-    @GetMapping("{id}")
-    public Address getAddressById(@PathVariable("id") Integer id) {
-        return addressService.getAddressById(id);
+    @GetMapping("{address_id}")
+    public Address getAddressById(@PathVariable("address_id") Integer addressId) {
+        return addressService.getAddressById(addressId);
     }
 
     @PostMapping
@@ -33,19 +33,19 @@ public class AddressController {
         addressService.addAddress(address);
     }
 
-    @DeleteMapping("{id}")
-    public void deleteAddress(@PathVariable("id") Integer id) {
-        addressService.deleteAddress(id);
+    @DeleteMapping("{address_id}")
+    public void deleteAddress(@PathVariable("address_id") Integer addressId) {
+        addressService.deleteAddress(addressId);
     }
 
-    @PutMapping("{id}")
+    @PutMapping("{address_id}")
     public void updateAddress(
-            @PathVariable("id") Integer id,
+            @PathVariable("address_id") Integer addressId,
             @RequestParam(required = false) String city,
             @RequestParam(required = false) Integer postalCode,
             @RequestParam(required = false) String country,
             @RequestParam(required = false) String street
     ) {
-        addressService.updateAddress(id, city, postalCode, country, street);
+        addressService.updateAddress(addressId, city, postalCode, country, street);
     }
 }
