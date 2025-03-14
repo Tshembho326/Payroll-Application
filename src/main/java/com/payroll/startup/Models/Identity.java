@@ -23,10 +23,11 @@ public class Identity {
     public Identity() {
     }
 
-    public Identity(Integer id, String idType, String idValue) {
+    public Identity(Integer id, String idType, String idValue, Employee employee) {
         this.id = id;
         this.idType = idType;
         this.idValue = idValue;
+        this.employee = employee;
     }
 
     public Integer getId() {
@@ -51,5 +52,13 @@ public class Identity {
 
     public void setIdValue(String idValue) {
         this.idValue = idValue;
+    }
+
+    public Employee getEmployee() {
+        return employee;
+    }
+
+    public void setEmployee(Employee employee) {
+        this.employee = employee;
     }
 }
